@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<ruleset id="cg_stringsearch"
+    xmlns="http://windup.jboss.org/schema/jboss-ruleset"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://windup.jboss.org/schema/jboss-ruleset http://windup.jboss.org/schema/jboss-ruleset/windup-jboss-ruleset.xsd">
+  
+  <metadata>
+        <description>
+                This ruleset detects hardcoded strings (URLS, Email Addresses, IP Addresses, etc.) that may cause issues during migration.
+        </description>
+         <dependencies>
+            <addon id="org.jboss.windup.rules,windup-rules-javaee,3.0.0.Final"/>
+            <addon id="org.jboss.windup.rules,windup-rules-java,3.0.0.Final"/>
+        </dependencies>
+	</metadata>
+
+	 <rules>
+		   <rule id="cg_stringsearch_001">
+            <when>
+				<filecontent pattern="{searchURL}"  filename="{*}.{ext}"/> 
+            </when>
+
+            <perform>
+				<hint category-id="Cloud Optional" effort="0" title="Hard-coded URL">
+				  <message>When migrating environments, hard-coded URLS may need to be eliminated.</message>   			   </hint>
+            </perform>
+
+			<where param="ext">
+				<matches pattern="(java|properties|xml|txt)"/>
+            </where>			
+			<where param="searchURL">
+				<matches pattern="(www|http)"/>
+            </where>
+        </rule>
+		
+		<rule id="cg_stringsearch_002">
+            <when>
+				<filecontent pattern="{searchEmail}"  filename="{*}.{ext}"/> 
+            </when>
+
+            <perform>
+				<hint category-id="Cloud Optional" effort="0" title="Hard-coded Email address">
+				  <message>When migrating environments, hard-coded email addresses may need to be eliminated.</message>
+   			   </hint>
+            </perform>
+
+			<where param="ext">
+				<matches pattern="(java|properties|xml|txt)"/>
+            </where>			
+			<where param="searchEmail">
+				<matches pattern="[\w-]+@([\w-]+\.)+[\w-]+"/>
+            </where>
+        </rule>
+
+     </rules>
+
+</ruleset>
