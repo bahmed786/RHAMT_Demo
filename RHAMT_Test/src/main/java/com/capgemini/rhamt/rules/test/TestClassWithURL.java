@@ -12,7 +12,7 @@ public class TestClassWithURL {
 		strURLs[1] = "www.google.com";
 		strURLs[2] = "https://myConnect.capgemini.com";
 		strURLs[3]= "bahmed@yahoo.com";
-		strURLs[3]= "192.0.0.168";
+		strURLs[4]= "192.0.0.168";
 		
 				
 		for (int a=0; a<strURLs.length; a++) {
