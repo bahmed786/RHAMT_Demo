@@ -1,4 +1,4 @@
-package com.capgemini.rhamt.test.rhamt.test;
+package com.rhamt.rules.testing;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.capgemini.rhamt.rules.test;
+package com.rhamt.rules.test;
 
 import java.net.*;
 
